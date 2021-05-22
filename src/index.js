@@ -8,6 +8,15 @@ import { createStore } from "polotno/model/store";
 
 import { Preview } from "./preview";
 
+import { observer } from 'mobx-react-lite';
+// import existing section
+import { TextSection } from 'polotno/side-panel/side-panel';
+// import default tab component
+import { SectionTab } from 'polotno/side-panel/tab-button';
+// import our own icon
+import FaShapes from '@meronex/icons/fa/FaShapes';
+
+
 const store = createStore({
   // this is a demo key just for that project
   // (!) please don't use it in your projects
@@ -55,6 +64,28 @@ store.activePage.addElement({
   fontFamily: "Amatic SC"
 });
 
+// define the new custom section
+const CustomSection1 = {
+  name: 'custom1 ',
+  Tab: (props) => (
+    <SectionTab name="Custom 1" {...props}>
+      <FaShapes icon="new-text-box" />
+    </SectionTab>
+  ),
+  // we need observer to update component automatically on any store changes
+  Panel: observer(({ store }) => {
+    return (
+      <div>
+        <p>Here we will define our own custom tab.</p>
+        <p>Elements on the current page: {store.activePage?.children.length}</p>
+      </div>
+    );
+  }),
+};
+
+// we will have just two sections
+const sections = [CustomSection1, TextSection];
+
 const App = ({ store }) => {
   return (
     <div
@@ -65,7 +96,7 @@ const App = ({ store }) => {
       }}
     >
       <div style={{ width: "400px", height: "100%", display: "flex" }}>
-        <SidePanel store={store} />
+        <SidePanel store={store} sections={sections} defaultSection="custom" />
       </div>
       <div
         style={{
@@ -77,4 +108,12 @@ const App = ({ store }) => {
           position: "relative"
         }}
       >
-        <Toolbar stor
+        <Toolbar store={store} />
+        <Workspace store={store} />
+        <Preview store={store} />
+      </div>
+    </div>
+  );
+};
+
+ReactDOM.render(<App store={store} />, document.getElementById("root"));
