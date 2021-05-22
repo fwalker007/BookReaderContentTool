@@ -64,28 +64,6 @@ store.activePage.addElement({
   fontFamily: "Amatic SC"
 });
 
-// define the new custom section
-const CustomSection1 = {
-  name: 'custom1 ',
-  Tab: (props) => (
-    <SectionTab name="Custom 1" {...props}>
-      <FaShapes icon="new-text-box" />
-    </SectionTab>
-  ),
-  // we need observer to update component automatically on any store changes
-  Panel: observer(({ store }) => {
-    return (
-      <div>
-        <p>Here we will define our own custom tab.</p>
-        <p>Elements on the current page: {store.activePage?.children.length}</p>
-      </div>
-    );
-  }),
-};
-
-// we will have just two sections
-const sections = [CustomSection1, TextSection];
-
 const App = ({ store }) => {
   return (
     <div
@@ -96,7 +74,7 @@ const App = ({ store }) => {
       }}
     >
       <div style={{ width: "400px", height: "100%", display: "flex" }}>
-        <SidePanel store={store} sections={sections} defaultSection="custom" />
+        <SidePanel store={store} />
       </div>
       <div
         style={{
