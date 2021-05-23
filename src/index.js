@@ -75,8 +75,10 @@ store.activePage.addElement({
 store.activePage.addElement({
   type: "image",
   src: "https://dev-encantos-app-us-east-1.s3.amazonaws.com/bookCreatorImages/Spread_01_Pinpon.png",
+  width:200,
+  height:200,
   x: 50,
-  y: 350 
+  y: 150 
 });
 
 store.addPage({
