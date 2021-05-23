@@ -61,7 +61,7 @@ export const Preview = observer(({ store }) => {
         className="preview-container"
         style={{ display: previewVisible ? "" : "none", position: "relative" }}
       >
-        <img src="./book-cover.jpeg" style={{ width: "300px" }} />
+        <img src="./public/book-cover.jpeg" style={{ width: "300px" }} />
         <img
           src={content}
           style={{
