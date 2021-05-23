@@ -72,6 +72,13 @@ store.activePage.addElement({
   fontFamily: "Amatic SC"
 });
 
+store.activePage.addElement({
+  type: "image",
+  src: "https://dev-encantos-app-us-east-1.s3.amazonaws.com/bookCreatorImages/Spread_01_Pinpon.png",
+  x: 50,
+  y: 350 
+});
+
 store.addPage({
   background: 'grey', // default is "white"
 });
@@ -113,7 +120,8 @@ export const PhotosPanel = observer(({ store }) => {
       { url: "https://dev-encantos-app-us-east-1.s3.amazonaws.com/bookCreatorImages/Spread_01_house.png" },
       { url: "https://dev-encantos-app-us-east-1.s3.amazonaws.com/bookCreatorImages/Spread_01_Pinpon.png" },
       { url: "https://dev-encantos-app-us-east-1.s3.amazonaws.com/bookCreatorImages/Spread_06_Bed.png" },
-      { url: "https://dev-encantos-app-us-east-1.s3.amazonaws.com/bookCreatorImages/TT_World+Map_Design_Japan+v2.jpg" },
+      { url: "https://bookcontent.s3.amazonaws.com/TT_World+Map_Design_Japan+v2.jpg" },
+
     ]);
   } 
 
